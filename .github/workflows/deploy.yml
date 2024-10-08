@@ -25,7 +25,6 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_PRIVATE_KEY }}
-          port: 22
           scripts_step: true
           script: |
             cd /home/ubuntu/spring-boot
@@ -33,4 +32,5 @@ jobs:
             sudo ./gradlew clean build
             sudo fuser -k -n tcp 8080 || true
             sudo docker pull "$DOCKER_ID"/spring-boot-demo:latest
-            sudo docker run -d -p 8080:8080 "$DOCKER_ID"/spring-boot-demo:latest
+            CONTAINER_ID=$(sudo docker run -d -p 8080:8080 "$DOCKER_ID"/spring-boot-demo:latest)
+            sudo docker logs -f "$CONTAINER_ID"
