@@ -22,5 +22,6 @@ jobs:
             git pull origin main
             sudo ./gradlew clean build
             sudo fuser -k -n tcp 8080 || true
+            sudo docker login -u ${{ secrets.DOCKER_ID }}
             sudo docker build -t dockertestimg/spring-boot-demo:latest
             nohup sudo docker run -d -p 8080:8080 dockertestimg > ./output.log 2 >&1 &
