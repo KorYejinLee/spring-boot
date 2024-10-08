@@ -29,7 +29,7 @@ jobs:
             sudo fuser -k -n tcp 8080 || true
             sudo docker images
             sudo docker ps 
-            sudo docker stop ${{ secrets.DOCKER_ID }}
             sudo docker pull ${{ secrets.DOCKER_ID }}/spring-boot-demo:latest
             sudo docker images
-            sudo docker run -d -p 8080:8080 --name ${{ secrets.DOCKER_ID }} ${{ secrets.DOCKER_ID }}/spring-boot-demo:latest
+            sudo docker rmi -f latest
+            sudo docker run -d -p 8080:8080 --name latest ${{ secrets.DOCKER_ID }}/spring-boot-demo:latest
