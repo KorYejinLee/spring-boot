@@ -1,0 +1,13 @@
+name: Deploy To EC2
+
+on:
+  push:
+    branches:
+      - main
+
+  jobs:
+    Deploy:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Dockerfile로 spring 서버 실행하기
+          users: appleboy/ssh-action@v1.0.3
