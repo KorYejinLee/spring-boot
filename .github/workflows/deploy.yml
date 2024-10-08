@@ -29,8 +29,7 @@ jobs:
             cd /home/ubuntu/spring-boot
             git pull origin main
             sudo ./gradlew clean build
-            sudo fuser -k -n tcp 8080 || true
-            sudo docker rmi -f "$DOCKER_ID"/spring-boot-demo
+            sudo fuser -k -n 8080/tcp || true
             sudo docker ps 
             sudo docker pull "$DOCKER_ID"/spring-boot-demo:latest
             sudo docker run -d -p 8080:8080 "$DOCKER_ID"/spring-boot-demo:latest
