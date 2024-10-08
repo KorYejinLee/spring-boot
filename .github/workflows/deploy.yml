@@ -28,4 +28,4 @@ jobs:
             echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" --password-stdin
             docker pull "$DOCKER_ID"/spring-boot-demo:lastest
             sudo docker build -t "$DOCKER_ID"/spring-boot-demo:latest
-            nohup sudo docker run -d -p 8080:8080 dockertestimg/spring-boot-demo > ./output.log 2 >&1 &
+            nohup sudo docker run -d -p 8080:8080 "$DOCKER_ID"/spring-boot-demo > ./output.log 2 >&1 &
