@@ -31,5 +31,5 @@ jobs:
             git pull origin main
             sudo ./gradlew clean build
             sudo fuser -k -n tcp 8080 || true
-            docker pull "$DOCKER_ID"/spring-boot-demo:latest
+            sudo docker pull "$DOCKER_ID"/spring-boot-demo:latest
             sudo nohup docker run -d -p 8080:8080 "$DOCKER_ID"/spring-boot-demo:latest > ./output.log 2 >&1 &
