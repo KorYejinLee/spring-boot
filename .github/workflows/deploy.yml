@@ -32,4 +32,5 @@ jobs:
             sudo ./gradlew clean build
             sudo fuser -k -n tcp 8080 || true
             sudo docker pull "$DOCKER_ID"/spring-boot-demo:latest
+            sudo docker images
             sudo docker run -d -p 8080:8080 "$DOCKER_ID"/spring-boot-demo:latest
