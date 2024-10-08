@@ -30,7 +30,9 @@ jobs:
             git pull origin main
             sudo ./gradlew clean build
             sudo fuser -k -n tcp 8080 || true
+            sudo docker images
             sudo docker ps 
             sudo docker stop "&DOCKER_ID"
             sudo docker pull "$DOCKER_ID"/spring-boot-demo:latest
-            sudo docker run -d -p 8080:8080 --name "&DOCKER_NAME" "$DOCKER_ID"/spring-boot-demo:latest
+            sudo docker images
+            sudo docker run -d -p 8080:8080 --name "&DOCKER_ID" "$DOCKER_ID"/spring-boot-demo:latest
