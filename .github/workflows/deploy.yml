@@ -5,9 +5,20 @@ on:
     branches:
       - main
 
-  jobs:
-    Deploy:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Dockerfile로 spring 서버 실행하기
-          users: appleboy/ssh-action@v1.0.3
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dockerfile로 spring 서버 실행하기
+        users: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          script_step: true
+          script: |
+            cd /home/ubuntu/spring-boot
+            git pull origin main
+            ./gradlew clean build
+            sudo fuser -k -n tcp 8080 || true
+            nohup docker run -d -p 8080:8080 dockertestimg > ./output.log 2 >&1 &
