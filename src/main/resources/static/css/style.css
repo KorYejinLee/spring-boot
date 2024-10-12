@@ -1,0 +1,23 @@
+body {
+    background: beige;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.member-input, .member-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 5px;
+    width: 200px;
+}

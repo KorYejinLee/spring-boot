@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Members</title>
+</head>
+<body>
+<div class="container">
+    <h2>Members</h2>
+</div>
+<div class="container">
+    <div class="member-list">
+        <table th:border="1">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>이름</th>
+                <th>나이</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member: ${members}">
+                <td th:text="${member.getId()}"></td>
+                <td th:text="${member.getName()}"></td>
+                <td th:text="${member.getAge()}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <a style="margin-top: 5px" th:href="@{/}">메인</a>
+    </div>
+</div>
+
+</body>
+</html>

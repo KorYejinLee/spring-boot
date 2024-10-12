@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Home</title>
+</head>
+<body>
+<div class="container">
+    <h2>Home</h2>
+</div>
+<div class="container">
+    <div class="member-input">
+        <form th:action th:method="post" th:object="${member}">
+            <div class="input-group">
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required/>
+            </div>
+            <div class="input-group">
+                <label for="age">나이</label>
+                <input type="text" id="age" name="age" placeholder="나이를 입력하세요" required/>
+            </div>
+            <div class="container">
+                <button type="submit">제출</button>
+            </div>
+            <a th:href="@{/members}">목록</a>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
