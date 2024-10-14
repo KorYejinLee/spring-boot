@@ -37,9 +37,9 @@ jobs:
             sudo fuser -k -n tcp 8080 || true
             sudo fuser -k -n tcp 3306 || true
 
-            # 실행 중인 컨테이너 중지 및 삭제
-            sudo docker stop $(sudo docker ps -aq)
-            sudo docker rm -f $(sudo docker ps -aq)
+            # 실행 중인 컨테이너 삭제
+            sudo docker rm -f springboot
+            sudo docker rm -f db-mysql
             
             # container pull
             sudo docker pull ${{ secrets.DOCKER_ID }}/spring-boot-demo:mysql1.0
