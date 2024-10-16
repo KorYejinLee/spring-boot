@@ -36,7 +36,7 @@ jobs:
 
             git pull origin main
             echo "$APPLICATION_PROPERTIES" > src/main/resources/application.yml
-            echo "DOCKER_COMPOSE_YML" > src/main/resources/docker-compose.yml
+            echo "$DOCKER_COMPOSE_YML" > src/main/resources/docker-compose.yml
             sudo ./gradlew clean build -x test
             
             # port kill
