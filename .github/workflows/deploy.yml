@@ -52,7 +52,7 @@ jobs:
             sudo docker pull ${{ secrets.DOCKER_ID }}/spring-boot-demo:springboot1.0
             
             # container 구동
-            sudo docker-compose up -d
+            sudo docker-compose up --build -d
 
             # log
             sudo docker ps -a
