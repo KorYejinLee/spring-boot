@@ -29,7 +29,10 @@ jobs:
             # 환경 설정
             cd /home/ubuntu/spring-boot
             rm -rf src/main/resources/application.yml
+            rm -rf src/main/resources/docker-compose.yml
+
             git pull origin main
+            echo "$APPLICATION_PROPERTIES" > src/main/resources/application.yml
             echo "$APPLICATION_PROPERTIES" > src/main/resources/application.yml
             sudo ./gradlew clean build -x test
             
@@ -46,7 +49,7 @@ jobs:
             sudo docker pull ${{ secrets.DOCKER_ID }}/spring-boot-demo:springboot1.0
             
             # container 구동
-            sudo docker-compose up -d
+            sudo docker-compose up --build -d
 
             # log
             sudo docker ps -a
