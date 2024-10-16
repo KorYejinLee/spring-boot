@@ -38,4 +38,4 @@ out/
 
 ### application.yml ###
 application.yml
-docker-compose.yml
+src/main/resources/docker-compose.yml
