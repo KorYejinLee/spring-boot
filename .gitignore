@@ -36,6 +36,13 @@ out/
 ### VS Code ###
 .vscode/
 
-### application.yml ###
+### application ###
 application.yml
+
+### docker-compose ###
 docker-compose.yml
+
+### mysql.sock ###
+db/mysql.sock
+db/
+
