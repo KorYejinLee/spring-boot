@@ -46,17 +46,9 @@ jobs:
             sudo docker pull ${{ secrets.DOCKER_ID }}/spring-boot-demo:mysql1.0
             sudo docker pull ${{ secrets.DOCKER_ID }}/spring-boot-demo:springboot1.0
             
-            # mysql container 실행
-            sudo docker run --init -d --name db-mysql --network springboot-mysql-net -p 3306:3306 -e MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }} ${{ secrets.DOCKER_ID }}/spring-boot-demo:mysql1.0
-            
-            # mysql db 생성
-            sudo docker exec -it mydb mysql -u root -p
-            CREATE DATABASE IF NOT EXISTS mydb;
-            EXIT;
-            
-            # spring-boot container 실행
-            sudo docker run --init -d --name springboot --network springboot-mysql-net -p 8080:8080 ${{ secrets.DOCKER_ID }}/spring-boot-demo:springboot1.0
-            
+            # container 구동
+            sudo docker-compose up -d
+
             # log
             sudo docker ps -a
             nohup java -jar build/libs/*SNAPSHOT.jar > ./output.log 2 >& 1 &
