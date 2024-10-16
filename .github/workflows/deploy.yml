@@ -25,9 +25,6 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_PRIVATE_KEY }}
-          envs:
-            APPLICATION_PROPERTIES
-            DOCKER_COMPOSE_YML
           scripts_step: true
           script: |
             # 환경 설정
@@ -36,8 +33,8 @@ jobs:
             rm -rf docker-compose.yml
 
             git pull origin main
-            echo "$APPLICATION_PROPERTIES" > src/main/resources/application.yml
-            echo "$DOCKER_COMPOSE_YML" > docker-compose.yml
+            echo ${{ secrets.APPLICATION_PROPERTIES }} > src/main/resources/application.yml
+            echo ${{ secrets.DOCKER_COMPOSE_YML }} > docker-compose.yml
             sudo ./gradlew clean build -x test
             
             # port kill
