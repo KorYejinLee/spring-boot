@@ -42,8 +42,7 @@ jobs:
             # 실행 중인 컨테이너 삭제
             sudo docker rm -f spring-boot
             sudo docker rm -f db-mysql
-            
-            
+                  
             # docker images build
             sudo docker build -t db-mysql:latest
             sudo docker build -t spring-boot:latest
