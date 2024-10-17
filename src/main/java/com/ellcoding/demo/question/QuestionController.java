@@ -10,6 +10,6 @@ public class QuestionController {
     @GetMapping("/question/list")
     @ResponseBody
     public String list() {
-        return "question list";
+        return "question_list";
     }
 }
