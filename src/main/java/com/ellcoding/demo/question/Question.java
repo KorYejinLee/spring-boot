@@ -1,5 +1,6 @@
-package com.ellcoding.demo;
+package com.ellcoding.demo.question;
 
+import com.ellcoding.demo.answer.Answer;
 import jakarta.persistence.*;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
