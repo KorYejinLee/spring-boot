@@ -5,9 +5,7 @@ on:
     branches:
       - main
 
-
 jobs:
-
   Deploy:
     runs-on: ubuntu-latest
     steps:
@@ -42,12 +40,13 @@ jobs:
             sudo ./gradlew clean build -x test
 
             # 실행 중인 컨테이너 삭제
-            sudo docker rm -f springboot
+            sudo docker rm -f spring-boot
             sudo docker rm -f db-mysql
             
-            # container pull
-            sudo docker pull ${{ secrets.DOCKER_ID }}/spring-boot-demo:mysql1.0
-            sudo docker pull ${{ secrets.DOCKER_ID }}/spring-boot-demo:springboot1.0
+            
+            # docker images build
+            sudo docker build -t db-mysql:latest
+            sudo docker build -t spring-boot:latest
             
             # container 구동
             sudo docker-compose up -d
