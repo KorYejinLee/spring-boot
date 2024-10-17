@@ -41,15 +41,13 @@ jobs:
             # 실행 중인 컨테이너 삭제
             sudo docker rm -f springboot
             sudo docker rm -f db-mysql
-            
-            # docker images 삭제
-            sudo docker rmi springboot-img:1.0
 
-            # docker springboot image 생성
-            sudo docker build -t springboot-img:1.0 .
+            # container pull
+            sudo docker pull ***/spring-boot-demo:mysql1.0
+            sudo docker pull ***/spring-boot-demo:springboot1.0
 
             # container 구동
-            sudo docker-compose up --build -d
+            sudo docker-compose up -d
 
             # log
             sudo docker ps -a
