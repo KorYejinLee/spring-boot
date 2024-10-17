@@ -48,10 +48,6 @@ jobs:
             sudo docker rmi ${{ secrets.DOCKER_ID }}/spring-boot-demo:mysql
             sudo docker rmi ${{ secrets.DOCKER_ID }}/spring-boot-demo:springboot
             
-            # docker images build
-            sudo docker build -t ${{ secrets.DOCKER_ID }}/spring-boot-demo:mysql .
-            sudo docker build -t ${{ secrets.DOCKER_ID }}/spring-boot-demo:springboot .
-            
             # container 구동
             sudo docker-compose up --build -d
 
