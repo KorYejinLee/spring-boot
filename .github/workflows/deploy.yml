@@ -9,7 +9,6 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.3.0
       - name: SSH(원격접속)로 EC2에 접속하기
         uses: appleboy/ssh-action@v1.0.3
         env:
@@ -33,12 +32,16 @@ jobs:
             sudo ./gradlew clean build -x test
 
             # 실행 중인 컨테이너 삭제
-            sudo docker rm -f spring-boot
+            sudo docker rm -f springboot
             sudo docker rm -f db-mysql
+            
+            # docker image 삭제
+            sudo docker rmi springboot
+            sudo docker rmi db-mysql
                   
             # docker images build
-            sudo docker build -t db-mysql:latest
-            sudo docker build -t spring-boot:latest
+            sudo docker build -t db-mysql:latest .
+            sudo docker build -t springboot:latest .
             
             # container 구동
             sudo docker-compose up -d
