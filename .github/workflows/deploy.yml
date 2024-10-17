@@ -43,7 +43,10 @@ jobs:
             sudo docker rm -f db-mysql
             
             # docker images 삭제
-            sudo docker rmi ${{ secrets.DOCKER_ID }}/spring-boot-demo:springboot
+            sudo docker rmi springboot-img:1.0
+
+            # docker springboot image 생성
+            sudo docker build -t springboot-img:1.0 .
 
             # container 구동
             sudo docker-compose up --build -d
